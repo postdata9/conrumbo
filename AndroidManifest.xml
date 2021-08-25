@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.conrumbo">
+    
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ConRumbo">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.ConRumbo.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".gestion.IniciarSesion"
+            android:label="@string/iniciar_sesion">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".gestion.Registrarse"
+            android:label="@string/registrarse">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".gestion.RecordarClave"
+            android:label="@string/recordar_passwd" />
+        <activity
+            android:name=".perfil.GestionarPerfil"
+            android:label="@string/perfil">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".gestion.Creacion"
+            android:label="@string/crear_ruta">
+        </activity>
+        <activity
+            android:name=".lugares.AgregarLugar"
+            android:label="@string/agregar_lugar_activity">
+        </activity>
+        <activity
+            android:name=".rutas.CrearRuta"
+            android:label="@string/crear_ruta">
+        </activity>
+        <activity
+            android:name=".pdi.CrearPuntoInteres"
+            android:label="@string/crear_punto_interes">
+        </activity>
+        <activity
+            android:name=".pdi.ModificarPuntoInteres"
+            android:label="@string/modificar_punto_interes">
+        </activity>
+        <activity
+            android:name=".gestion.Buscador"
+            android:label="@string/buscador">
+        </activity>
+        <activity
+            android:name=".lugares.LugaresVisitados"
+            android:label="@string/lugares_visitados">
+        </activity>
+        <activity
+            android:name=".rutas.RutasFavoritas"
+            android:label="@string/rutas_favoritas">
+        </activity>
+        <activity
+            android:name=".rutas.VerRuta"
+            android:label="@string/ver_ruta">
+        </activity>
+        <activity
+            android:name=".rutas.ModificarRuta"
+            android:label="@string/modificar_ruta">
+        </activity>
+    </application>
+
+</manifest>
