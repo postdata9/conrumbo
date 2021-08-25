@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="70dp"
+        android:src="@drawable/logotipo"/>
+
+    <EditText
+        android:id="@+id/nombre_usuario_sesion"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:inputType="textEmailAddress"
+        android:hint="@string/correo_electronico"
+        android:maxLength="50"/>
+
+    <EditText
+        android:id="@+id/clave_sesion"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:inputType="textPassword"
+        android:hint="@string/contraseña"
+        android:maxLength="50"/>
+
+    <Button
+        android:id="@+id/boton_sesion"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/boton_verde"
+        android:text="@string/iniciar_sesion"
+        android:textColor="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Button
+            android:id="@+id/boton_recordar_clave"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="3dp"
+            android:background="@drawable/boton"
+            android:text="@string/recordar_passwd"
+            android:textSize="10dp"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+        <Button
+            android:id="@+id/boton_registrarse"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="3dp"
+            android:textSize="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/boton"
+            android:text="@string/registrarse"
+            android:gravity="center"/>
+    </LinearLayout>
+</LinearLayout>

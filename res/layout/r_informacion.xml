@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ruta_informacion"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/info_ruta_publica"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="@string/informacion_ruta"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:id="@+id/operaciones_ruta_propia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/eliminar_ruta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_eliminar"/>
+
+        <ImageView
+            android:id="@+id/modificar_ruta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/ic_modificar_ruta"/>
+
+        <ImageView
+            android:id="@+id/agregar_puntos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_agregar_pdi"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/portada_ruta"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="15dp"
+            android:src="@mipmap/sin_foto"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/nombre_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_color" />
+
+            <TextView
+                android:id="@+id/tipo_ruta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/primary_color" />
+
+            <TextView
+                android:id="@+id/npuntos_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/primary_color" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separador1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/secondary_color"/>
+
+
+    <!-- Información de la ruta -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginBottom="10dp">
+
+        <!-- Duración -->
+        <LinearLayout
+            android:id="@+id/ll_duracion_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:textColor="@color/primary_color"
+                android:textStyle="bold"
+                android:text="@string/duracion_ruta"/>
+
+            <TextView
+                android:id="@+id/duracion_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:padding="3dp"
+                android:textColor="@color/primary_color"
+                android:scrollbars="vertical"/>
+        </LinearLayout>
+
+        <!-- Distancia -->
+        <LinearLayout
+            android:id="@+id/ll_distancia_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:textColor="@color/primary_color"
+                android:textStyle="bold"
+                android:text="@string/distancia_ruta"/>
+
+            <TextView
+                android:id="@+id/distancia_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:padding="3dp"
+                android:textColor="@color/primary_color"
+                android:scrollbars="vertical"/>
+        </LinearLayout>
+
+        <!-- Enlace -->
+        <LinearLayout
+            android:id="@+id/ll_enlace_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:textColor="@color/primary_color"
+                android:textStyle="bold"
+                android:text="@string/enlace_punto_2"/>
+
+            <TextView
+                android:id="@+id/enlace_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:padding="3dp"
+                android:textColor="@color/primary_color"
+                android:scrollbars="vertical"
+                android:textIsSelectable="true"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Separador -->
+    <View
+        android:id="@+id/separador2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/secondary_color"/>
+
+    <!-- Historia -->
+    <LinearLayout
+        android:id="@+id/ll_historia_punto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:textColor="@color/primary_color"
+            android:textStyle="bold"
+            android:text="@string/historia"/>
+
+        <TextView
+            android:id="@+id/historia_punto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:textColor="@color/primary_color"
+            android:maxLines="4"
+            android:maxLength="2000"
+            android:scrollbars="vertical"/>
+    </LinearLayout>
+</LinearLayout>

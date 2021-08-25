@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/crear_rutas"
+        android:title="@string/crear_ruta"/>
+
+    <item
+        android:id="@+id/add_ciudad"
+        android:title="@string/add_ciudad"/>
+</menu>

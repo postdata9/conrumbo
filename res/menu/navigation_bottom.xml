@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/buscador"
+        android:icon="@drawable/ic_buscar"
+        android:title="@string/buscador" />
+    <item
+        android:id="@+id/creacion"
+        android:icon="@drawable/ic_crear"
+        android:title="@string/creacion"/>
+    <item
+        android:id="@+id/perfil"
+        android:icon="@drawable/ic_perfil"
+        android:title="@string/perfil" />
+</menu>

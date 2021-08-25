@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/informacion_punto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:text="@string/informacion_punto"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textColor="@color/primary_color_dark"/>
+
+        <EditText
+            android:id="@+id/nombre_punto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="text"
+            android:maxLength="50"
+            android:hint="@string/nombre_punto"
+            android:scrollbars="vertical"
+            android:maxLines="2"/>
+
+        <EditText
+            android:id="@+id/historia_punto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="textMultiLine"
+            android:hint="@string/historia_punto"
+            android:maxLength="2000"
+            android:maxLines="4"
+            android:scrollbars="vertical"/>
+
+        <EditText
+            android:id="@+id/datoscuriosos_punto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="textMultiLine"
+            android:hint="@string/datoscuriosos_punto"
+            android:maxLength="2000"
+            android:maxLines="4"
+            android:scrollbars="vertical"/>
+
+        <EditText
+            android:id="@+id/horario_punto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="text"
+            android:hint="@string/horario_punto"
+            android:maxLength="20"
+            android:maxLines="2"
+            android:scrollbars="vertical"/>
+
+        <EditText
+            android:id="@+id/precio_punto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="text"
+            android:hint="@string/precio_punto"
+            android:maxLength="20"
+            android:maxLines="2"
+            android:scrollbars="vertical"/>
+
+        <EditText
+            android:id="@+id/enlace_punto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="text"
+            android:hint="@string/enlace_punto"
+            android:maxLength="100"
+            android:maxLines="2"
+            android:scrollbars="vertical"/>
+
+        <EditText
+            android:id="@+id/audioguia_punto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="text"
+            android:hint="@string/audioguia_punto"
+            android:maxLength="30"
+            android:maxLines="2"
+            android:scrollbars="vertical"/>
+
+        <EditText
+            android:id="@+id/opinion_punto"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:inputType="textMultiLine"
+            android:hint="@string/opinion_personal_punto"
+            android:maxLength="500"
+            android:maxLines="4"
+            android:scrollbars="vertical"/>
+
+        <Button
+            android:id="@+id/siguiente_punto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:background="@drawable/boton"
+            android:text="@string/siguiente"/>
+
+        <Button
+            android:id="@+id/eliminar_punto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:background="@drawable/boton"
+            android:backgroundTint="@color/color_error"
+            android:text="@string/borrar_punto"/>
+    </LinearLayout>
+</ScrollView>

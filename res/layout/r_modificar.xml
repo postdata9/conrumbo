@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textSize="20dp"
+        android:text="@string/informacion_ruta"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/portada_ruta"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            app:riv_corner_radius="75dp"
+            android:src="@mipmap/sin_foto"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/nombre_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_color"
+                android:hint="@string/nombre_ruta"/>
+
+            <EditText
+                android:id="@+id/nombre_ruta_editable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:textColor="@color/primary_color"
+                android:hint="@string/nombre_ruta"
+                android:maxLines="2"
+                android:maxLength="40"
+                android:scrollbars="vertical"/>
+
+            <EditText
+                android:id="@+id/tipo_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:textColor="@color/primary_color"
+                android:hint="@string/tipo_ruta"
+                android:maxLength="20"
+                android:maxLines="2"
+                android:scrollbars="vertical"/>
+
+            <Switch
+                android:id="@+id/privacidad_ruta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="3dp"
+                android:checked="false"
+                android:showText="false"
+                android:text="@string/privacidad_pub_ruta"
+                android:textColor="@color/primary_color"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separador1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/secondary_color"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/mapa_base"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            android:textColor="@color/primary_color_dark"/>
+
+        <RadioGroup
+            android:id="@+id/mapa_base"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:checkedButton="@id/mapa_basico">
+
+            <!-- 1 -->
+            <RadioButton
+                android:id="@+id/mapa_basico"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:text="@string/mapa_basico"
+                android:textColor="@color/primary_color"/>
+
+            <RadioButton
+                android:id="@+id/mapa_satelite"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:text="@string/mapa_satelite"
+                android:textColor="@color/primary_color"/>
+
+            <RadioButton
+                android:id="@+id/mapa_terreno"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:text="@string/mapa_terreno"
+                android:textColor="@color/primary_color"/>
+
+            <RadioButton
+                android:id="@+id/mapa_hibrido"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:text="@string/mapa_hibrido"
+                android:textColor="@color/primary_color"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/separador3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/secondary_color"/>
+
+    <!-- Información de la ruta -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <!-- Duración -->
+        <LinearLayout
+            android:id="@+id/ll_duracion_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:textColor="@color/primary_color"
+                android:textStyle="bold"
+                android:text="@string/duracion_ruta"/>
+
+            <EditText
+                android:id="@+id/duracion_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/primary_color"
+                android:maxLength="20"
+                android:maxLines="2"
+                android:scrollbars="vertical"/>
+        </LinearLayout>
+
+        <!-- Distancia -->
+        <LinearLayout
+            android:id="@+id/ll_distancia_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:textColor="@color/primary_color"
+                android:textStyle="bold"
+                android:text="@string/distancia_ruta"/>
+
+            <EditText
+                android:id="@+id/distancia_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/primary_color"
+                android:maxLength="20"
+                android:maxLines="2"
+                android:scrollbars="vertical"/>
+        </LinearLayout>
+
+        <!-- Enlace -->
+        <LinearLayout
+            android:id="@+id/ll_enlace_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:textColor="@color/primary_color"
+                android:textStyle="bold"
+                android:text="@string/enlace_punto_2"/>
+
+            <EditText
+                android:id="@+id/enlace_ruta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/primary_color"
+                android:scrollbars="vertical"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Separador -->
+    <View
+        android:id="@+id/separador2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/secondary_color"/>
+
+    <!-- Historia -->
+    <LinearLayout
+        android:id="@+id/ll_historia_punto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="3dp"
+            android:textColor="@color/primary_color"
+            android:textStyle="bold"
+            android:text="@string/historia"/>
+
+        <EditText
+            android:id="@+id/historia_ruta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_color"
+            android:maxLength="2000"
+            android:maxLines="4"
+            android:scrollbars="vertical"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/guardar_ruta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:padding="5dp"
+        android:background="@drawable/boton_verde"
+        android:text="@string/guardar_cambios"
+        android:textColor="@color/white"/>
+</LinearLayout>
+</ScrollView>

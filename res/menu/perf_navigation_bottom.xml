@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/modificar_datos"
+            android:icon="@drawable/ic_modificar_datos"
+            android:title="@string/modificar_datos"/>
+
+        <item
+            android:id="@+id/modificar_correo"
+            android:icon="@drawable/ic_modificar_correo"
+            android:title="@string/modificar_correo" />
+
+        <item
+            android:id="@+id/modificar_imagen"
+            android:icon="@drawable/ic_modificar_imagen"
+            android:title="@string/modificar_imagen" />
+
+        <item
+            android:icon="@drawable/ic_eliminar_datos"
+            android:id="@+id/eliminar_datos"
+            android:title="@string/eliminar_datos" />
+
+        <item
+            android:id="@+id/cerrar_sesion"
+            android:icon="@drawable/ic_cerrar_sesion"
+            android:title="@string/cerrar_sesion" />
+
+        <item
+            android:id="@+id/eliminar_cuenta"
+            android:icon="@drawable/ic_eliminar_cuenta"
+            android:title="@string/eliminar_cuenta" />
+    </group>
+</menu>

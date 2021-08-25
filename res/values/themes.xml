@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Theme.ConRumbo" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorSecondary">@color/secondary_color</item>
+        <item name="colorPrimaryDark">@color/primary_color_dark</item>
+        <item name="colorAccent">@color/secondary_color</item>
+        <item name="colorError">@color/color_error</item>
+        <item name="color">@color/secondary_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:color">@color/textColor</item>
+        <item name="materialButtonStyle">@color/primary_color</item>
+        <!-- Customize your theme here. -->
+        <item name="android:statusBarColor" tools:targetApi="l">@color/primary_color</item>
+        <item name="bottomNavigationStyle">@style/barra_navegacion</item>
+        <item name="android:navigationBarColor">@color/primary_color</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <style name="barra_navegacion" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="itemBackground">@color/primary_color</item>
+        <item name="itemIconTint">@color/primary_color_dark</item>
+        <item name="itemTextColor">@color/secondary_color</item>
+    </style>
+
+    <style name="barra_configuracion_perfil" parent="Theme.MaterialComponents.DayNight">
+        <item name="itemBackground">@color/primary_color</item>
+        <item name="itemIconTint">@color/primary_color_dark</item>
+        <item name="itemTextColor">@color/secondary_color</item>
+    </style>
+
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!-- Alert Dialog -->
+    <style name="MyAlertDialogTheme" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:backgroundDimAmount">0.90</item>
+    </style>
+
+    <style name="Theme.ConRumbo.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.ConRumbo.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.ConRumbo.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+</resources>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        map:uiZoomControls="true"
+        map:uiRotateGestures="true"
+        map:cameraTargetLat="48.5224076"
+        map:cameraTargetLng="6.3400515"
+        map:cameraZoom="3.5"
+        tools:context=".pdi.CrearPuntoInteres" />
+
+    <RelativeLayout
+        android:id="@+id/buscar_crear_rutas"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/cajon_buscar">
+
+        <ImageView
+            android:id="@+id/lupa_buscador_punto"
+            android:src="@drawable/ic_lupa_buscador"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true" />
+
+        <EditText
+            android:id="@+id/input_buscador_punto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/lupa_buscador_punto"
+            android:inputType="text"
+            android:hint="@string/busca_lugar"
+            android:imeOptions="actionSearch"
+            android:textColor="@color/primary_color_dark"
+            android:textSize="15sp"
+            android:maxLength="50"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/terminar_creacion_ruta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:text="@string/terminar_ruta"
+        android:textColor="@color/white"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="@drawable/boton_verde"/>
+
+</RelativeLayout>

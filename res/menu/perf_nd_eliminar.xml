@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nombre_eliminar"
+        android:title="@string/nombre"/>
+
+    <item
+        android:id="@+id/descripcion_eliminar"
+        android:title="@string/descripcion"/>
+
+    <item
+        android:id="@+id/enlace_eliminar"
+        android:title="@string/enlace"/>
+
+    <item
+        android:id="@+id/foto_eliminar"
+        android:title="@string/foto_perfil"/>
+</menu>
