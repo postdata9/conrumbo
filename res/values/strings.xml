@@ -19,7 +19,7 @@
     <string name="agregar_ruta_fav">Añadir ruta a favoritas</string>
     <string name="agregar_ruta_fav_mensaje">¿Desea marcar la ruta como favorita?</string>
     <string name="favorita">Favorita</string>
-    <string name="busca_buscador">Escribe un lugar o tipo de ruta...</string>
+    <string name="busca_buscador">Escribe un lugar...</string>
 
     <!-- Creación -->
     <string name="opciones_nada">Ninguna opción seleccionada.</string>
@@ -53,7 +53,7 @@
     <string name="clave_debil">La clave introducida no es suficientemente fuerte.</string>
     <string name="email_already_use">The email address is already in use by another account.</string>
     <string name="correo_ya_en_uso">Ya existe una cuenta con dicho correo.</string>
-    <string name="registro_error">Error al registrar usuario. Intentenlo de nuevo o mas tarde.</string>
+    <string name="registro_error">Error al registrar usuario. Inténtelo de nuevo o mas tarde.</string>
     <string name="invalid_email">The email address is badly formatted.</string>
     <string name="email_not_exits">There is no user record corresponding to this identifier. The user may have been deleted.</string>
 
@@ -63,13 +63,13 @@
     <string name="geolicalizar_vacio">Para buscar un lugar escriba el nombre en el cajón de búsqueda.</string>
     <string name="lugar_agregado_exito"> ha sido agregada con éxito a su lista de Lugares visitados.</string>
     <string name="lugar_agregado_error">Error al agregar el lugar a su lista de Lugares visitados.</string>
-    <string name="lugares_visitados_vacio">Su lista de lugares favoritos está vacía.</string>
+    <string name="lugares_visitados_vacio">Su lista de lugares visitados está vacía.</string>
     <string name="lugar_visitado_eliminado_exito">Lugar visitado eliminado con éxito.</string>
     <string name="agregar_lugar">Añadir a lugares visitados</string>
     <string name="busca_lugar">Escribe un lugar...</string>
     <string name="lugares_visitados">Lugares visitados</string>
     <string name="add_ciudad">Añadir lugar visitado</string>
-    <string name="borrar_lugar_visitado">Eliminar lugar de visitados.</string>
+    <string name="borrar_lugar_visitado">Eliminar lugar de visitados</string>
 
 
     <!-- PUNTO DE INTERÉS -->
@@ -114,7 +114,7 @@
     <string name="perfil_error">Error al obtener el perfil.</string>
     <string name="aviso_nulo_modificar_correo">El nuevo correo y la clave no pueden estar vacíos.</string>
     <string name="aviso_igual_modificar_correo">El nuevo correo es el mismo de la cuenta. Seleccione un correo diferente.</string>
-    <string name="aviso_modificar_correo">Por seguridad, se solicita la contraseña \n de la cuenta para verificar el cambio de correo.</string>
+    <string name="aviso_modificar_correo">Por seguridad, se solicita la contraseña   de la cuenta para verificar el cambio de correo.</string>
     <string name="correo_electronico_nuevo">Nuevo correo electrónico</string>
     <string name="perfil">Perfil</string>
 
@@ -127,7 +127,7 @@
     <string name="enlace_eliminar_exito">Enlace eliminado con éxito.</string>
     <string name="enlace_eliminar_error">Error al eliminar el enlace. Inténtelo de nuevo o más tarde.</string>
     <string name="foto_eliminar_exito">Imagen eliminada con éxito.</string>
-    <string name="foto_eliminar_error">Error al eliminar la foto. Inténtelo de nuevo o más tarde.</string>
+    <string name="foto_eliminar_error">Error al eliminar la imagen. Inténtelo de nuevo o más tarde.</string>
     <string name="usuario_eliminado">Usuario eliminado con éxito.</string>
     <string name="eliminar_error">Error al eliminar la cuenta. Inténtelo de nuevo o más tarde.</string>
     <string name="modificar_datos_modificar_exito">Datos modificados con éxito.</string>
@@ -197,7 +197,6 @@
 
 
     <!-- NAVIGATION BOTTOM -->
-    <string name="buscador">Buscador</string>
-    <string name="creacion">Creacion</string>
-    <string name="notificaciones">Notificaciones</string>
+    <string name="buscador">Buscar</string>
+    <string name="creacion">Crear</string>
 </resources>
