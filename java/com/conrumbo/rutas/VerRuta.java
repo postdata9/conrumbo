@@ -266,10 +266,6 @@ public class VerRuta extends AppCompatActivity implements OnMapReadyCallback {
 
         //cerramos el bottomsheet
         bs.dismiss();
-
-        tam_coleccion = tam_coleccion + 1;
-        String num = tam_coleccion + "";
-        ((TextView) info_ruta.findViewById(R.id.npuntos_ruta)).setText(getResources().getText(R.string.num_puntos) + num);
     }
 
 
