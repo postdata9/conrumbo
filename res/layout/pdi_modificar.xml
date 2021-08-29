@@ -41,7 +41,6 @@
             android:inputType="textMultiLine"
             android:hint="@string/historia_punto"
             android:maxLength="2000"
-            android:maxLines="4"
             android:scrollbars="vertical"/>
 
         <EditText
@@ -52,7 +51,6 @@
             android:inputType="textMultiLine"
             android:hint="@string/datoscuriosos_punto"
             android:maxLength="2000"
-            android:maxLines="4"
             android:scrollbars="vertical"/>
 
         <EditText
@@ -62,7 +60,7 @@
             android:layout_margin="10dp"
             android:inputType="text"
             android:hint="@string/horario_punto"
-            android:maxLength="20"
+            android:maxLength="40"
             android:maxLines="2"
             android:scrollbars="vertical"/>
 
@@ -73,7 +71,7 @@
             android:layout_margin="10dp"
             android:inputType="text"
             android:hint="@string/precio_punto"
-            android:maxLength="20"
+            android:maxLength="40"
             android:maxLines="2"
             android:scrollbars="vertical"/>
 

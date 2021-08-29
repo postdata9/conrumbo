@@ -23,18 +23,18 @@
         android:id="@+id/buscar_crear_rutas"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginLeft="20dp"
         android:background="@drawable/cajon_buscar">
 
         <ImageView
             android:id="@+id/lupa_buscador_buscador"
-            android:src="@drawable/ic_lupa_buscador"
             android:layout_width="20dp"
             android:layout_height="20dp"
+            android:layout_centerVertical="true"
             android:layout_margin="10dp"
-            android:layout_centerVertical="true"/>
+            android:src="@drawable/ic_lupa_buscador" />
 
         <EditText
             android:id="@+id/input_buscador_buscador"
@@ -42,9 +42,9 @@
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@+id/lupa_buscador_buscador"
-            android:inputType="text"
             android:hint="@string/busca_buscador"
             android:imeOptions="actionSearch"
+            android:inputType="text"
             android:maxLength="50"
             android:textColor="@color/primary_color_dark"
             android:textSize="15sp" />

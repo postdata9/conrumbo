@@ -11,8 +11,7 @@
         android:layout_margin="20dp"
         android:text="@string/recordar_passwd"
         android:textSize="25dp"
-        android:textColor="@color/primary_color_dark"
-        />
+        android:textColor="@color/primary_color_dark" />
 
     <EditText
         android:id="@+id/correo"

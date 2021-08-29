@@ -302,7 +302,6 @@
             android:layout_height="wrap_content"
             android:textColor="@color/primary_color"
             android:maxLength="2000"
-            android:maxLines="4"
             android:scrollbars="vertical"/>
     </LinearLayout>
 

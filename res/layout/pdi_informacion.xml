@@ -195,7 +195,8 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:scrollbars="horizontal">
 
             <!-- Historia -->
             <LinearLayout
@@ -204,7 +205,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp">
+                android:layout_marginBottom="5dp"
+                android:scrollbars="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -218,7 +220,6 @@
                     android:id="@+id/historia_punto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="4"
                     android:padding="3dp"
                     android:textColor="@color/primary_color"
                     android:scrollbars="vertical" />
@@ -245,7 +246,6 @@
                     android:id="@+id/datoscuriosos_punto"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="4"
                     android:padding="3dp"
                     android:textColor="@color/primary_color"
                     android:scrollbars="vertical"/>
