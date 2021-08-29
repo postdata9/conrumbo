@@ -199,4 +199,7 @@
     <!-- NAVIGATION BOTTOM -->
     <string name="buscador">Buscar</string>
     <string name="creacion">Crear</string>
+    <string name="cuenta_eliminada_exito">Cuenta eliminada con éxito.</string>
+    <string name="lugar_no_encontrado">Lugar no encontrado, inténtelo de nuevo con otro nombre.</string>
+    <string name="correo_verificacion_enviado">Correo de verificación enviado.</string>
 </resources>

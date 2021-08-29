@@ -157,4 +157,7 @@
     <string name="eliminar_cuenta">Remove account</string>
     <string name="buscador">Search</string>
     <string name="creacion">Create</string>
+    <string name="cuenta_eliminada_exito">Account successfully deleted.</string>
+    <string name="lugar_no_encontrado">Place not found, try again with another name.</string>
+    <string name="correo_verificacion_enviado">Verification email sent.</string>
 </resources>

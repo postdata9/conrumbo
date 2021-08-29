@@ -157,4 +157,7 @@
     <string name="registrarse">Registrieren</string>
     <string name="registro">Registrierung</string>
     <string name="recordar">Erinnern</string>
+    <string name="cuenta_eliminada_exito">Account erfolgreich gelöscht.</string>
+    <string name="lugar_no_encontrado">Ort nicht gefunden, versuchen Sie es erneut mit einem anderen Namen.</string>
+    <string name="correo_verificacion_enviado">Verifizierungs-E-Mail gesendet.</string>
 </resources>
