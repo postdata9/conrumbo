@@ -58,6 +58,9 @@
         <activity
             android:name=".gestion.Creacion"
             android:label="@string/crear_ruta">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".lugares.AgregarLugar"
@@ -78,6 +81,9 @@
         <activity
             android:name=".gestion.Buscador"
             android:label="@string/buscador">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".lugares.LugaresVisitados"
