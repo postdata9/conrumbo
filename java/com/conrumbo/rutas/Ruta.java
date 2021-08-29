@@ -51,14 +51,29 @@ public class Ruta {
 
     //constructor dado un map
     public Ruta(Map<String, Object> ruta){
-        nombre = ruta.get("nombre").toString();
-        tipo = ruta.get("tipo").toString();
-        duracion = ruta.get("duracion").toString();
-        distancia = ruta.get("distancia").toString();
-        historia = ruta.get("historia").toString();
-        enlace = ruta.get("enlace").toString();
-        mapa_base = Integer.parseInt(ruta.get("mapaBase").toString());
-        privacidad = Integer.parseInt(ruta.get("privacidad").toString());
+        if(ruta.get("nombre") != null) { nombre = ruta.get("nombre").toString(); }
+        else{ nombre = ""; }
+
+        if(ruta.get("tipo") != null) { tipo = ruta.get("tipo").toString(); }
+        else{ tipo = ""; }
+
+        if(ruta.get("duracion") != null) { duracion = ruta.get("duracion").toString();}
+        else{ duracion = ""; }
+
+        if(ruta.get("distancia") != null) { distancia = ruta.get("distancia").toString();}
+        else{ distancia = ""; }
+
+        if(ruta.get("historia") != null) { historia = ruta.get("historia").toString();}
+        else{ historia = ""; }
+
+        if(ruta.get("enlace") != null) { enlace = ruta.get("enlace").toString();}
+        else{ enlace = ""; }
+
+        if(ruta.get("mapaBase") != null) { mapa_base = Integer.parseInt(ruta.get("mapaBase").toString());}
+        else{ mapa_base = 1; }
+
+        if(ruta.get("privacidad") != null) { privacidad = Integer.parseInt(ruta.get("privacidad").toString());}
+        else{ privacidad = 0; }
     }
 
 
@@ -130,13 +145,13 @@ public class Ruta {
     }
 
     public void setRuta(Map<String, Object> ruta){
-        nombre = ruta.get("nombre").toString();
-        tipo = ruta.get("tipo").toString();
-        duracion = ruta.get("duracion").toString();
-        distancia = ruta.get("distancia").toString();
-        historia = ruta.get("historia").toString();
-        enlace = ruta.get("enlace").toString();
-        mapa_base = Integer.parseInt(ruta.get("mapaBase").toString());
-        privacidad = Integer.parseInt(ruta.get("privacidad").toString());
+        if(ruta.get("nombre") != null) { nombre = ruta.get("nombre").toString(); }
+        if(ruta.get("tipo") != null) { tipo = ruta.get("tipo").toString(); }
+        if(ruta.get("duracion") != null) { duracion = ruta.get("duracion").toString();}
+        if(ruta.get("distancia") != null) { distancia = ruta.get("distancia").toString();}
+        if(ruta.get("historia") != null) { historia = ruta.get("historia").toString();}
+        if(ruta.get("enlace") != null) { enlace = ruta.get("enlace").toString();}
+        if(ruta.get("mapaBase") != null) { mapa_base = Integer.parseInt(ruta.get("mapaBase").toString());}
+        if(ruta.get("privacidad") != null) { privacidad = Integer.parseInt(ruta.get("privacidad").toString());}
     }
 }

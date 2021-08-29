@@ -5,12 +5,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.conrumbo.R;
 import com.conrumbo.gestion.IniciarSesion;
 import com.conrumbo.gestion.Registrarse;
 import com.conrumbo.perfil.GestionarPerfil;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -77,10 +80,12 @@ public class ModeloGestion extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     //si se ha podido crear
                     if (task.isSuccessful()) {
+                        enviarCorreoVerificacion(cont);
+
                         //pasamos a la siguiente actividad para registrar los datos personales
                         Intent i = new Intent(cont, Registrarse.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         i.putExtra("accion", "datos_personales");
-                        cont.startActivity(i);
+                        cont.startActivity(i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                     } else {
                         //mostramos los diferentes errores que han podido pasar
                         String error = task.getException().getMessage();
@@ -119,14 +124,23 @@ public class ModeloGestion extends AppCompatActivity {
                     .addOnSuccessListener(taskSnapshot -> {
                         Toast.makeText(cont, cont.getResources().getString(R.string.imagen_subida),
                                 Toast.LENGTH_SHORT).show();
-                        cont.startActivity(new Intent(cont, GestionarPerfil.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        cont.startActivity(new Intent(cont, GestionarPerfil.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                     })
 
                     .addOnFailureListener(e -> {
                         // mensaje de error
                         Toast.makeText(cont, cont.getResources().getString(R.string.imagen_fallo), Toast.LENGTH_SHORT).show();
-                        cont.startActivity(new Intent(cont, GestionarPerfil.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        cont.startActivity(new Intent(cont, GestionarPerfil.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                     });
         }
+    }
+
+    private void enviarCorreoVerificacion(Context cont){
+        FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification()
+                .addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        Toast.makeText(cont, cont.getResources().getString(R.string.correo_verificacion_enviado), Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

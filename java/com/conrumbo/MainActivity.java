@@ -16,7 +16,7 @@ public class MainActivity extends Activity {
         //mostramos la pantalla de iniciar sesión
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //startActivity(new Intent(MainActivity.this, Creacion.class)); finish();
+
         //si el usuario ya está loggeado, se muestra la pantalla del perfil
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
             startActivity(new Intent(MainActivity.this, GestionarPerfil.class));

@@ -86,17 +86,17 @@ public class Perfil {
     }
 
     public void setPerfil(Map<String, Object> perf){
-        nombre = perf.get("nombre").toString();
-        descripcion = perf.get("descripcion").toString();
-        enlace = perf.get("enlace").toString();
-        privacidad = Integer.parseInt(perf.get("privacidad").toString());
+        if (perf.get("nombre") != null) { nombre = perf.get("nombre").toString(); }
+        if(perf.get("descripcion") != null){ descripcion = perf.get("descripcion").toString(); }
+        if(perf.get("enlace") != null){ enlace = perf.get("enlace").toString(); }
+        if(perf.get("privacidad") != null){ privacidad = Integer.parseInt(perf.get("privacidad").toString()); }
     }
 
     public void setPerfil(Bundle b){
-        nombre = b.getString("nombre");
-        descripcion = b.getString("descripcion");
-        enlace = b.getString("enlace");
-        privacidad = b.getInt("privacidad");
+        if(b.get("nombre") != null){ nombre = b.getString("nombre");}
+        if(b.get("descripcion") != null){ descripcion = b.getString("descripcion");}
+        if(b.get("enlace") != null){ enlace = b.getString("enlace");}
+        if(b.get("privacidad") != null){ privacidad = b.getInt("privacidad");}
     }
 
     public Bundle getBundle(){

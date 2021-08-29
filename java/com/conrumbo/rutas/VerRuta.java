@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
@@ -47,6 +48,7 @@ public class VerRuta extends AppCompatActivity implements OnMapReadyCallback {
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private final ModeloPunto mp = new ModeloPunto(VerRuta.this, uid);
     private final ModeloRuta mr = new ModeloRuta(VerRuta.this, uid);
+    private static final float ZOOM_DEFECTO = 15f;
 
     //datos de la ruta y pdi
     private String uid_ruta;
@@ -110,7 +112,7 @@ public class VerRuta extends AppCompatActivity implements OnMapReadyCallback {
 
         //cuando se clica un punto de interés, aparece la información en un bottom sheet
         map.setOnMarkerClickListener(marker -> {
-
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), ZOOM_DEFECTO));
             //cuando se clica en un marcador, que es una ruta
             //muestra el bottom sheet con la información
             bs = new BottomSheetDialog(VerRuta.this,
@@ -185,7 +187,7 @@ public class VerRuta extends AppCompatActivity implements OnMapReadyCallback {
 
             //actualizamos la historia
             if(!("").equals(pdi.getHistoria())){ ((TextView) info_pdi.findViewById(R.id.historia_punto)).setText(pdi.getHistoria()); }
-            else{ info_pdi.findViewById(R.id.ll_historia_punto).setVisibility(View.GONE); i++; }
+            else{ info_pdi.findViewById(R.id.ll_historia_punto).setVisibility(View.GONE); i++;}
 
             //actualizamos los datos curiosos
             if(!("").equals(pdi.getDatosCuriosos())){ ((TextView) info_pdi.findViewById(R.id.datoscuriosos_punto)).setText(pdi.getDatosCuriosos()); }
@@ -222,7 +224,7 @@ public class VerRuta extends AppCompatActivity implements OnMapReadyCallback {
         i.putExtra("id_marcador", id);
         i.putExtra("nombre", pdi.getNombre());
         i.putExtra("historia", pdi.getHistoria());
-        i.putExtra("datos_curiosos", pdi.getDatosCuriosos());
+        i.putExtra("datosCuriosos", pdi.getDatosCuriosos());
         i.putExtra("horario", pdi.getHorario());
         i.putExtra("precio", pdi.getPrecio());
         i.putExtra("enlace", pdi.getEnlace());
@@ -245,14 +247,9 @@ public class VerRuta extends AppCompatActivity implements OnMapReadyCallback {
         puntos_mapa.remove(id);
 
         tam_coleccion = tam_coleccion - 1;
-        /*if(tam_coleccion > 1){
-        ((TextView) info_ruta.findViewById(R.id.npuntos_ruta))
-                .setText(getResources().getText(R.string.num_puntos) + num);
-        }
-        else{
-            ((TextView) info_ruta.findViewById(R.id.npuntos_ruta))
-                    .setText(getResources().getText(R.string.num_puntos) + "0");
-        }*/
+
+        //se actualiza en las rutas públicas
+        mp.actualizarInfoRutaPublica(uid_ruta, ruta.getNombre(), tam_coleccion - 1);
 
         //cerramos el bottomsheet
         bs.dismiss();
@@ -263,6 +260,9 @@ public class VerRuta extends AppCompatActivity implements OnMapReadyCallback {
         //se actualiza en la bd
         pdi.setPunto(datos);
         mp.registrarPunto(ruta.getNombre(), pdi);
+
+        //se actualiza en las rutas públicas
+        mp.actualizarInfoRutaPublica(uid_ruta, ruta.getNombre(), tam_coleccion - 1);
 
         //cerramos el bottomsheet
         bs.dismiss();
@@ -336,7 +336,7 @@ public class VerRuta extends AppCompatActivity implements OnMapReadyCallback {
         if(documentos_ruta.size() > 1){
             //obtenemos las coordenadas del primer punto de interés
             Map.Entry<String, PuntoInteres> entry = puntos_ruta.entrySet().iterator().next();
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(entry.getValue().getCoordenadas(), 6f));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(entry.getValue().getCoordenadas(), ZOOM_DEFECTO));
         }
     }
 

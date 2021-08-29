@@ -10,6 +10,7 @@ import com.conrumbo.pdi.PuntoInteres;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.google.gson.internal.bind.ObjectTypeAdapter;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -37,5 +38,13 @@ public class ModeloPunto extends AppCompatActivity {
         bd.collection("rutas").document(uid).collection(nombre_ruta).document(pdi.getId()).set(pdi);
     }
 
+    //actualizamos el número de puntos de la ruta pública
+    public void actualizarInfoRutaPublica(String uid_r, String nombre, int tam){
+        String path = uid_r + ", " + nombre;
+        Map<String, Object> npuntos = new HashMap<>();
+        npuntos.put("numero_puntos", tam);
+
+        bd.collection("rutas_publicas").document(path).set(npuntos, SetOptions.merge());
+    }
 
 }

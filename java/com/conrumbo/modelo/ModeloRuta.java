@@ -226,4 +226,14 @@ public class ModeloRuta extends AppCompatActivity {
     public void eliminarRutaPublica(String nombre_ruta){
         bd.collection("rutas_publicas").document(uid + ", " + nombre_ruta).delete();
     }
+
+    //actualizamos los valores de duracion y distancia
+    public void actualizarInfoRutaPublica(Ruta ruta){
+        Map<String, Object> rp = new HashMap<>();
+        rp.put("duracion", ruta.getDuracion());
+        rp.put("distancia", ruta.getDistancia());
+
+        bd.collection("rutas_publicas").document(uid + ", " + ruta.getNombre())
+                .set(rp, SetOptions.merge());
+    }
 }

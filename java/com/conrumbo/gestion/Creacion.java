@@ -90,5 +90,9 @@ public class Creacion extends AppCompatActivity implements OnMapReadyCallback {
         else if(id == R.id.perfil){
             startActivity(new Intent(this, GestionarPerfil.class));
         }
+        else if(id == R.id.creacion){
+            finish();
+            startActivity(getIntent());
+        }
     }
 }

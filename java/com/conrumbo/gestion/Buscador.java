@@ -81,7 +81,7 @@ public class Buscador extends AppCompatActivity implements OnMapReadyCallback {
 
         //cuando se clica en un marcador del mapa
         map.setOnMarkerClickListener(marker -> {
-
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), 13f));
             //cuando se clica en un marcador, que es una ruta
             //muestra el bottom sheet con la información
             final BottomSheetDialog bs = new BottomSheetDialog(Buscador.this,
@@ -161,7 +161,7 @@ public class Buscador extends AppCompatActivity implements OnMapReadyCallback {
             String uid = rutas_publicas.get(id).get("uid").toString();
 
             FirebaseFirestore bd = FirebaseFirestore.getInstance();
-            bd.collection("usuarios").document(uid)
+            bd.collection("usuarios").document(FirebaseAuth.getInstance().getCurrentUser().getUid())
                     .collection("rutas_favoritas")
                     .document(uid + ", " + nombre).get()
                     .addOnCompleteListener(task -> {
@@ -240,7 +240,7 @@ public class Buscador extends AppCompatActivity implements OnMapReadyCallback {
 
         //eliminamos la ruta pública de la lista de favoritas
         FirebaseFirestore bd = FirebaseFirestore.getInstance();
-        bd.collection("usuarios").document(uid).collection("rutas_favoritas")
+        bd.collection("usuarios").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection("rutas_favoritas")
                 .document(uid + ", " + nombre).delete()
                 .addOnCompleteListener(task -> {
                     //si la consulta se ha realizado
@@ -267,7 +267,6 @@ public class Buscador extends AppCompatActivity implements OnMapReadyCallback {
 
             //si la acción es BUSCAR o ENTER
             if(actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE
-                    || event.getAction() == KeyEvent.ACTION_DOWN
                     || event.getAction() == KeyEvent.KEYCODE_ENTER){
 
                 //localizamos el lugar
@@ -388,6 +387,10 @@ public class Buscador extends AppCompatActivity implements OnMapReadyCallback {
         }
         else if(id == R.id.perfil){
             startActivity(new Intent(this, GestionarPerfil.class)); finish();
+        }
+        else if(id == R.id.buscador){
+            finish();
+            startActivity(getIntent());
         }
     }
 }

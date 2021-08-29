@@ -186,6 +186,7 @@ public class ModificarRuta extends AppCompatActivity{
     //registramos la ruta
     private void registrarRuta(){
         mr.modificarRuta(ruta, privacidad_cambiada, imagen_establecida, archivo);
+        mr.actualizarInfoRutaPublica(ruta);
         Intent i = new Intent(ModificarRuta.this, VerRuta.class);
         i.putExtra("nombre", ruta.getNombre());
         i.putExtra("uid", uid);

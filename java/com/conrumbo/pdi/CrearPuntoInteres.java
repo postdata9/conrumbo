@@ -44,7 +44,8 @@ import java.util.Map;
 public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCallback {
 
     //datos necesarios
-    private static final float ZOOM_DEFECTO = 13f;
+    private static final float ZOOM_DEFECTO = 15f;
+    private static final float ZOOM_DEFECTO_PUNTO = 20f;
     private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     private final ModeloRuta mr = new ModeloRuta(CrearPuntoInteres.this, uid);
     private final ModeloPunto mp = new ModeloPunto(CrearPuntoInteres.this, uid);
@@ -115,14 +116,16 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
         map.setMapType(mapa_base);
 
         //cuando se clica en el mapa, se añade un marcador
-        map.setOnMapLongClickListener(latLng -> addMarcador(latLng, null));
+        map.setOnMapLongClickListener(latLng ->{
+            addMarcador(latLng, null, null);
+        });
 
         //cuando se clica en un punto de interés, se añade un marcador
-        map.setOnPoiClickListener(pointOfInterest -> addMarcador(pointOfInterest.latLng, pointOfInterest));
+        map.setOnPoiClickListener(pointOfInterest -> addMarcador(null, pointOfInterest, null));
 
         //cuando se clica en un marcador del mapa
         map.setOnMarkerClickListener(marker -> {
-
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(marker.getPosition(), ZOOM_DEFECTO_PUNTO));
             //cuando se clica en un marcador
             //se lleva a la pantalla para modificar la información
             informacionPDI(marker.getId());
@@ -139,15 +142,28 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
     }
 
     /* añadir marcador al mapa en las coordenadas ll (latitud, longitud)*/
-    private void addMarcador(LatLng ll, PointOfInterest poi){
+    private void addMarcador(LatLng ll, PointOfInterest poi, Address ad){
 
         //creamos un punto de interés con las coordenadas
         PuntoInteres p = new PuntoInteres();
-        p.setCoordenadas(ll);
 
         //si es un punto de interés, se obtiene el nombre
         if(poi != null){
             p.setNombre(poi.name);
+            p.setCoordenadas(poi.latLng);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(poi.latLng, ZOOM_DEFECTO_PUNTO));
+            ll = poi.latLng;
+        }
+        //si es un lugar buscado
+        else if(ad != null){
+            p.setNombre(ad.getFeatureName());
+            p.setCoordenadas(new LatLng(ad.getLatitude(), ad.getLongitude()));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(p.getCoordenadas(), ZOOM_DEFECTO_PUNTO));
+            ll = p.getCoordenadas();
+        }
+        else{
+            p.setCoordenadas(ll);
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(ll, ZOOM_DEFECTO_PUNTO));
         }
 
         //posicionamos el marcador aux en la posición
@@ -177,7 +193,7 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
         Intent i = new Intent(this, ModificarPuntoInteres.class);
         i.putExtra("nombre", pdi.getNombre());
         i.putExtra("historia", pdi.getHistoria());
-        i.putExtra("datos_curiosos", pdi.getDatosCuriosos());
+        i.putExtra("datosCuriosos", pdi.getDatosCuriosos());
         i.putExtra("horario", pdi.getHorario());
         i.putExtra("precio", pdi.getPrecio());
         i.putExtra("enlace", pdi.getEnlace());
@@ -208,8 +224,8 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
 
     //actualizamos el mapa con los puntos
     private void actualizarMapa(QuerySnapshot documentos_ruta){
-        //map.setMapType(mapa_base);
-
+        int tam = documentos_ruta.size()-1;
+        int j = 0;
         PuntoInteres punto;
         Marker marcador_mapa;
         float color = 0.0f;
@@ -218,6 +234,7 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
         for(DocumentSnapshot doc : documentos_ruta){
             //obtenemos los documentos de los puntos de interés
             if(!doc.getId().equals("informacion")){
+                j++;
                 punto = new PuntoInteres(doc.getData());
 
                 //obtenemos las coordenadas para añadir el marcador al mapa
@@ -231,6 +248,10 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
                 //añadimos a los puntos el id del marcador y los datos de la ruta
                 puntos_ruta.put(marcador_mapa.getId(), punto);
                 puntos_mapa.put(marcador_mapa.getId(), marcador_mapa);
+
+                if(tam == j){
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(punto.getCoordenadas(), ZOOM_DEFECTO));
+                }
             }
         }
 
@@ -257,7 +278,6 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
 
             //si la acción es BUSCAR o ENTER
             if(actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE
-                    || event.getAction() == KeyEvent.ACTION_DOWN
                     || event.getAction() == KeyEvent.KEYCODE_ENTER){
 
                 //localizamos el lugar
@@ -286,27 +306,19 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
                 //obtenemos la primera localización, mostramos el lugar en pantalla y movemos la cámara
                 Address ad = list.get(0);
 
-                //almacenamos las coordenadas
-                LatLng punto_interes = new LatLng(ad.getLatitude(), ad.getLongitude());
-
                 //añadimos un marcador
-                addMarcador(punto_interes, null);
-
-                //movemos la cámara al marcador
-                moverCamaraMapa(punto_interes, ZOOM_DEFECTO);
+                addMarcador(null, null, ad);
 
                 //cerrar el teclado
                 cerrarTeclado();
+            }
+            else{
+                Toast.makeText(this, getResources().getText(R.string.lugar_no_encontrado), Toast.LENGTH_SHORT).show();
             }
         }
         else{
             Toast.makeText(this, getResources().getText(R.string.geolicalizar_vacio), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    //mover la cámara
-    private void moverCamaraMapa(LatLng ll, float z){
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(ll, z));
     }
 
     //para cerrar el teclado

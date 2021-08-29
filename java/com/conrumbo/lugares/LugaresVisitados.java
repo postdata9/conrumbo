@@ -63,7 +63,6 @@ public class LugaresVisitados extends AppCompatActivity {
     private void prepararLista(List<DocumentSnapshot> lugares){
         //para cada documento, obtenemos el nombre y los datos
         for(DocumentSnapshot doc : lugares){
-            //info_lugares.put(doc.getId(), doc.getData());
             lugares_visitados.add(doc.getId());
         }
 

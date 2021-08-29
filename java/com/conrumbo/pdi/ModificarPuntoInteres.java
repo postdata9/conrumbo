@@ -42,7 +42,7 @@ public class ModificarPuntoInteres extends AppCompatActivity {
 
             ((EditText) findViewById(R.id.nombre_punto)).setText(datos.getString("nombre"));
             ((EditText) findViewById(R.id.historia_punto)).setText(datos.getString("historia"));
-            ((EditText) findViewById(R.id.datoscuriosos_punto)).setText(datos.getString("datos_curiosos"));
+            ((EditText) findViewById(R.id.datoscuriosos_punto)).setText(datos.getString("datosCuriosos"));
             ((EditText) findViewById(R.id.horario_punto)).setText(datos.getString("horario"));
             ((EditText) findViewById(R.id.precio_punto)).setText(datos.getString("precio"));
             ((EditText) findViewById(R.id.enlace_punto)).setText(datos.getString("enlace"));
@@ -79,7 +79,7 @@ public class ModificarPuntoInteres extends AppCompatActivity {
         i.putExtra("id_marcador", id);
         i.putExtra("nombre", ((EditText)findViewById(R.id.nombre_punto)).getText().toString());
         i.putExtra("historia", ((EditText)findViewById(R.id.historia_punto)).getText().toString());
-        i.putExtra("datos_curiosos", ((EditText)findViewById(R.id.datoscuriosos_punto)).getText().toString());
+        i.putExtra("datosCuriosos", ((EditText)findViewById(R.id.datoscuriosos_punto)).getText().toString());
         i.putExtra("horario", ((EditText)findViewById(R.id.horario_punto)).getText().toString());
         i.putExtra("precio", ((EditText)findViewById(R.id.precio_punto)).getText().toString());
         i.putExtra("enlace", ((EditText)findViewById(R.id.enlace_punto)).getText().toString());

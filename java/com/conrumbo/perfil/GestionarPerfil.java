@@ -31,8 +31,11 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.conrumbo.gestion.Buscador;
 import com.conrumbo.gestion.Creacion;
 import com.conrumbo.R;
+import com.conrumbo.gestion.IniciarSesion;
 import com.conrumbo.modelo.ModeloPerfil;
 import com.conrumbo.rutas.RutasPropiasFragment;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
@@ -50,9 +53,9 @@ public class GestionarPerfil extends AppCompatActivity
         DrawerLayout.DrawerListener{
 
     //datos necesarios
-    private final String correo = FirebaseAuth.getInstance().getCurrentUser().getEmail();
-    private final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    private final ModeloPerfil mp = new ModeloPerfil(GestionarPerfil.this, uid);
+    private String correo;
+    private String uid;
+    private ModeloPerfil mp;
 
     //elementos de perfil
     private Perfil perfil = new Perfil();
@@ -74,19 +77,27 @@ public class GestionarPerfil extends AppCompatActivity
         setContentView(R.layout.perf_general);
 
         //asignamos el correo y el uid
+        if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+            correo = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            mp = new ModeloPerfil(GestionarPerfil.this, uid);
 
-        //asignamos los imageView correspondientes de la foto de perfil y la cabecera
-        imagen_iv = findViewById(R.id.imagen_perfil);
-        foto_cabecera = findViewById(R.id.imagen_cabecera);
+            //asignamos los imageView correspondientes de la foto de perfil y la cabecera
+            imagen_iv = findViewById(R.id.imagen_perfil);
+            foto_cabecera = findViewById(R.id.imagen_cabecera);
 
-        //obtenemos el perfil: los datos y la imagen
-        obtenerPerfil();
-        obtenerImagenPerfil();
+            //obtenemos el perfil: los datos y la imagen
+            obtenerPerfil();
+            obtenerImagenPerfil();
 
-        //se inicializa el navigation view, el navigation bottom y el tab
-        inicializarNavigationView();
-        inicializarNavigationBottom();
-        inicializarTab();
+            //se inicializa el navigation view, el navigation bottom y el tab
+            inicializarNavigationView();
+            inicializarNavigationBottom();
+            inicializarTab();
+        }
+        else{
+            startActivity(new Intent(this, IniciarSesion.class)); finish();
+        }
     }
 
 
@@ -177,6 +188,9 @@ public class GestionarPerfil extends AppCompatActivity
         if(id == R.id.buscador){ startActivity(new Intent(this, Buscador.class)); }
         else if(id == R.id.creacion){
             startActivity(new Intent(this, Creacion.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+        }else if(id == R.id.perfil){
+            finish();
+            startActivity(getIntent());
         }
     }
 

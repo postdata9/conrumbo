@@ -180,13 +180,13 @@ public class PuntoInteres {
 
     public void setPunto(Bundle datos){
         //actualizamos los datos
-        nombre = datos.getString("nombre");
-        historia = datos.getString("historia");
-        datos_curiosos = datos.getString("datos_curiosos");
-        horario = datos.getString("horario");
-        precio = datos.getString("precio");
-        enlace = datos.getString("enlace");
-        audioguia = datos.getString("audioguia");
-        opinion = datos.getString("opinion");
+        if(datos.get("nombre") != null) {nombre = datos.getString("nombre");}
+        if(datos.get("historia") != null) { historia = datos.getString("historia");}
+        if(datos.get("datosCuriosos") != null){ datos_curiosos = datos.get("datosCuriosos").toString();}
+        if(datos.get("horario") != null){ horario = datos.get("horario").toString(); }
+        if(datos.get("precio") != null) { precio = datos.get("precio").toString(); }
+        if(datos.get("enlace") != null) { enlace = datos.get("enlace").toString(); }
+        if(datos.get("audioguia") != null) { audioguia = datos.get("audioguia").toString(); }
+        if(datos.get("opinion") != null) { opinion = datos.get("opinion").toString(); }
     }
 }
