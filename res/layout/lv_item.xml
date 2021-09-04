@@ -11,7 +11,7 @@
         android:layout_height="25dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"/>
 
     <TextView
         android:id="@+id/lugar_visitado_nombre"
@@ -22,5 +22,6 @@
         android:layout_marginBottom="15dp"
         android:layout_toRightOf="@+id/icono_lugar_visitado"
         android:textColor="@color/primary_color"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
+
 </RelativeLayout>

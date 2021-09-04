@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/nombre_ruta_propia"
-        android:layout_width="120dp"
+        android:layout_width="match_parent"
         android:layout_height="120dp"
         android:padding="5dp"
         android:gravity="center"
