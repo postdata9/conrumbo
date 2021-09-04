@@ -127,8 +127,8 @@ public class Buscador extends AppCompatActivity implements OnMapReadyCallback {
         if(rutas_publicas.get(id) != null){
             //si tiene imagen de portada, la establece, si no, elimina la imagen
             StorageReference ref = FirebaseStorage.getInstance().getReference()
-                    .child("rutas/" + rutas_publicas.get(id).get("uid") + "/" +
-                            rutas_publicas.get(id).get("nombre") + "/portada.jpg");
+                    .child(rutas_publicas.get(id).get("uid") + "/" +
+                            rutas_publicas.get(id).get("nombre") + ".jpg");
             ref.getBytes(1024*1024)
                     .addOnSuccessListener(bytes -> ((ImageView)info_rp.findViewById(R.id.buscador_imagen_ruta)).setImageBitmap(BitmapFactory.decodeByteArray(bytes, 0, bytes.length)))
                     .addOnFailureListener(e -> (info_rp.findViewById(R.id.buscador_imagen_ruta)).setVisibility(View.GONE));

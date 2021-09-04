@@ -35,8 +35,8 @@ public class ModeloPerfil extends AppCompatActivity {
     private String uid;
 
     //variables necesarias para eliminar las rutas
-    int num_rutas = 0, j = 0;
-    String nombre_ruta = "";
+    private int num_rutas = 0, j = 0;
+    private String nombre_ruta = "";
 
     public ModeloPerfil(Context c, String u){
         cont = c;
@@ -50,7 +50,7 @@ public class ModeloPerfil extends AppCompatActivity {
             Toast.makeText(cont, cont.getResources().getString(R.string.subiendo_imagen), Toast.LENGTH_SHORT).show();
 
             //definición del nombre de la imagen y donde se almacena
-            StorageReference ref = FirebaseStorage.getInstance().getReference().child("fotos_perfil/" + uid + ".jpg");
+            StorageReference ref = FirebaseStorage.getInstance().getReference().child(uid + "/perfil.jpg");
             ref.putFile(archivo)
                     .addOnSuccessListener(taskSnapshot ->
                             Toast.makeText(cont, cont.getResources().getString(R.string.imagen_subida), Toast.LENGTH_SHORT).show())
@@ -127,7 +127,7 @@ public class ModeloPerfil extends AppCompatActivity {
     //eliminar foto
     public void eliminarFoto(Bitmap imagen){
         if(imagen != null){
-            StorageReference ref = FirebaseStorage.getInstance().getReference().child("fotos_perfil/" + uid + ".jpg");
+            StorageReference ref = FirebaseStorage.getInstance().getReference().child(uid + "/perfil.jpg");
             ref.delete().addOnCompleteListener(task -> {
                 if(task.isSuccessful()){
                     cont.startActivity(new Intent(cont, GestionarPerfil.class));
@@ -141,13 +141,13 @@ public class ModeloPerfil extends AppCompatActivity {
     }
 
     //eliminar cuenta usuario
-    public void eliminarCuentaUsuario(Bitmap imagen){
+    public void eliminarCuentaUsuario(){
+
+        //eliminar imágenes
+        eliminarImagenes();
 
         //eliminamos los datos asociados al perfil
         eliminarDatosPerfil();
-
-        //eliminar imágenes
-        eliminarImagenes(imagen);
 
         //eliminar las referencias a las rutas públicas
         eliminarReferencias();
@@ -181,12 +181,18 @@ public class ModeloPerfil extends AppCompatActivity {
         bd.collection("usuarios").document(uid).delete();
     }
 
-    private void eliminarImagenes(Bitmap imagen){
-        //se elimina la foto
-        eliminarFoto(imagen);
+    private void eliminarImagenes(){
 
-        //se eliminan las fotos de las rutas
-        eliminarFotoRutas();
+        StorageReference ref = FirebaseStorage.getInstance().getReference().child(uid + "/");
+            ref.delete().addOnCompleteListener(task -> {
+                if(task.isSuccessful()){
+                    cont.startActivity(new Intent(cont, GestionarPerfil.class));
+                    Toast.makeText(cont, cont.getResources().getString(R.string.foto_eliminar_exito), Toast.LENGTH_SHORT).show();
+                }/*
+                else{
+                    Toast.makeText(cont, cont.getResources().getString(R.string.foto_eliminar_error), Toast.LENGTH_SHORT).show();
+                }*/
+            });
     }
 
     private void eliminarRutasPropias(){
@@ -279,20 +285,9 @@ public class ModeloPerfil extends AppCompatActivity {
                 });
     }
 
-    private void eliminarFotoRutas(){
-        //se eliminan las fotos de las rutas
-        StorageReference ref = FirebaseStorage.getInstance().getReference().child("rutas/" + uid + "/");
-        ref.getDownloadUrl().addOnSuccessListener(uri -> {
-            //si existen fotos de las rutas
-            ref.delete();
-        })
-        .addOnFailureListener(e -> Log.println(Log.INFO, "Aviso: ", "No hay imágenes de rutas"));
-    }
-
-
     private void terminarEliminar(){
         //mensaje que la cuenta se ha eliminado con éxito
-        Toast.makeText(cont, getResources().getText(R.string.cuenta_eliminada_exito), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(cont, getResources().getText(R.string.cuenta_eliminada_exito), Toast.LENGTH_SHORT).show();
 
         //eliminamos la referencia
         bd.collection("rutas").document(uid).delete();

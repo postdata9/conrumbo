@@ -75,7 +75,7 @@ public class ModificarCorreoFragment extends DialogFragment {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void modificarCorreo() {
+    private void modificarCorreo() {
         //obtenemos el nuevo correo
         EditText correo_et = v.findViewById(R.id.correo_nuevo_modificar);
         String correo_nuevo = correo_et.getText().toString().trim();

@@ -97,7 +97,7 @@ public class ModeloRuta extends AppCompatActivity {
 
             //definición del nombre de la imagen y donde se almacena
             StorageReference ref = FirebaseStorage.getInstance().getReference()
-                    .child("rutas/" + uid + "/" + nombre_ruta + "/portada.jpg");
+                    .child(uid + "/" + nombre_ruta + ".jpg");
             ref.putFile(archivo)
                     .addOnSuccessListener(taskSnapshot -> {
                         Toast.makeText(cont, cont.getResources().getString(R.string.imagen_subida),
@@ -179,7 +179,6 @@ public class ModeloRuta extends AppCompatActivity {
         Toast.makeText(cont, cont.getResources().getText(R.string.ruta_favorita_eliminada_exito), Toast.LENGTH_SHORT).show();
     }
 
-
     //eliminar ruta de la base de datos
     public void eliminarRutaBD(Ruta ruta){
         //eliminamos la colección
@@ -204,7 +203,7 @@ public class ModeloRuta extends AppCompatActivity {
 
         //eliminamos la carpeta de imágenes de firestorage
         StorageReference ref = FirebaseStorage.getInstance().getReference()
-                .child("rutas/" + uid + "/" + ruta.getNombre());
+                .child(uid + "/" + ruta.getNombre() + ".jpg");
         ref.delete();
 
         //si la ruta es pública, eliminamos la referencia en la bd

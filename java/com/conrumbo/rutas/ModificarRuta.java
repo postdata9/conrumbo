@@ -44,7 +44,7 @@ public class ModificarRuta extends AppCompatActivity{
     private boolean privacidad_cambiada = false;
 
     //datos para la portada de la ruta
-    public Uri archivo;
+    private Uri archivo;
     private Bitmap portada;
     private boolean imagen_establecida = false;
 
@@ -91,7 +91,7 @@ public class ModificarRuta extends AppCompatActivity{
     private void actualizarRuta(){
 
         //añadimos la imagen
-        StorageReference sr = FirebaseStorage.getInstance().getReference().child("rutas/" + uid + "/" + ruta.getNombre() + "/portada.jpg");
+        StorageReference sr = FirebaseStorage.getInstance().getReference().child(uid + "/" + ruta.getNombre() + ".jpg");
         sr.getBytes(2048*2048)
                 .addOnSuccessListener(bytes -> {
                     portada = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);

@@ -52,7 +52,7 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
 
     //datos necesarios
     private GoogleMap map;
-    private int mapa_base;
+    private int mapa_base = 1;
     private String nombre_ruta;
     private int privacidad_ruta;
 
@@ -305,6 +305,7 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
             if(!list.isEmpty()){
                 //obtenemos la primera localización, mostramos el lugar en pantalla y movemos la cámara
                 Address ad = list.get(0);
+                ad.setFeatureName(lugar);
 
                 //añadimos un marcador
                 addMarcador(null, null, ad);
@@ -346,16 +347,11 @@ public class CrearPuntoInteres extends AppCompatActivity implements OnMapReadyCa
             //si hay puntos en la ruta
             if(puntos_ruta.size() > 0){ Toast.makeText(CrearPuntoInteres.this, getResources().getText(R.string.exito_creacion_puntos), Toast.LENGTH_SHORT).show();}
 
-
-            if(getIntent().getExtras().getString("vengo_de").equals("ver")){
-                Intent i = new Intent(CrearPuntoInteres.this, VerRuta.class);
-                i.putExtra("nombre", nombre_ruta);
-                i.putExtra("uid", uid);
-                startActivity(i); finish();
-            }
-            else{
-                startActivity(new Intent(CrearPuntoInteres.this, Creacion.class)); finish();
-            }
+            //se inicia la actividad para ver la ruta creada/modificada
+            Intent i = new Intent(CrearPuntoInteres.this, VerRuta.class);
+            i.putExtra("nombre", nombre_ruta);
+            i.putExtra("uid", uid);
+            startActivity(i); finish();
         });
     }
 

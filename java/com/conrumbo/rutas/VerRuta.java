@@ -417,7 +417,7 @@ public class VerRuta extends AppCompatActivity implements OnMapReadyCallback {
 
         //si tiene imagen de portada, la establece, si no, elimina la imagen
         StorageReference ref = FirebaseStorage.getInstance().getReference()
-                .child("rutas/" + uid_ruta + "/" + ruta.getNombre() + "/portada.jpg");
+                .child(uid_ruta + "/" + ruta.getNombre() + ".jpg");
         ref.getBytes(1024*1024)
                 .addOnSuccessListener(bytes ->
                         //si la ruta tiene portada, se obtiene y se actualiza en la vista

@@ -37,7 +37,7 @@ public class CrearRuta extends Activity {
     private Ruta ruta = new Ruta();
 
     //datos para la portada de la ruta
-    public Uri archivo;                                         //uri del archivo seleccionado
+    private Uri archivo;                                         //uri del archivo seleccionado
     private boolean imagen_establecida;                         //para comprobar si la imagen se ha establecido o no
     private final int PICK_IMAGE_REQUEST = 13;                  //código de verificación
     private com.makeramen.roundedimageview.RoundedImageView iv; //referencia a la vista
@@ -69,7 +69,6 @@ public class CrearRuta extends Activity {
         findViewById(R.id.portada_ruta).setOnClickListener(v -> seleccionarImagen());
     }
 
-
     /* OBTENER LOS DATOS DE LA VISTA */
     //obtener los datos de la vista
     private void comprobarNombre(){
@@ -85,18 +84,15 @@ public class CrearRuta extends Activity {
             //se obtiene la colección con dicho nombre
             FirebaseFirestore bd = FirebaseFirestore.getInstance();
             bd.collection("rutas").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).collection(nombre).get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                        @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                            if (task.isSuccessful()) {
-                                //si está vacío, no existe una ruta ya con ese nombre
-                                if (task.getResult().isEmpty()) {
-                                    obtenerDatos();
-                                }
-                                //si no está vacío, existe ya una ruta con ese nombre
-                                else {
-                                    Toast.makeText(getApplicationContext(), getResources().getText(R.string.nombre_ruta_existe), Toast.LENGTH_SHORT).show();
-                                }
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            //si está vacío, no existe una ruta ya con ese nombre
+                            if (task.getResult().isEmpty()) {
+                                obtenerDatos();
+                            }
+                            //si no está vacío, existe ya una ruta con ese nombre
+                            else {
+                                Toast.makeText(getApplicationContext(), getResources().getText(R.string.nombre_ruta_existe), Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -159,7 +155,6 @@ public class CrearRuta extends Activity {
         i.putExtra("vengo_de", "crear");
         startActivity(i); finish();
     }
-
 
     /* PORTADA DE LA RUTA */
     private void seleccionarImagen() {

@@ -22,7 +22,7 @@ public class Registrarse extends Activity {
     private final int PICK_IMAGE_REQUEST = 22;
 
     //datos para la imagen
-    public Uri archivo;
+    private Uri archivo;
     private boolean imagen_establecida;
     private com.makeramen.roundedimageview.RoundedImageView iv;
 
@@ -62,7 +62,7 @@ public class Registrarse extends Activity {
             //comprobamos si el correo o la clave son nulas
             if(!("").equals(correo) && !("").equals(passwd)) {
                 //si no son nulos, registramos el correo
-                mgu.registrarUsuario(getApplicationContext(), correo, passwd);
+                mgu.registrarUsuario(correo, passwd);
             }
             //si alguno de los dos es nulo, mostramos el mensaje
             else {

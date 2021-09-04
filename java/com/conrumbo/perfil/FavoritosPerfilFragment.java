@@ -16,15 +16,11 @@ import com.conrumbo.rutas.RutasFavoritas;
 public class FavoritosPerfilFragment extends Fragment {
 
     //vista del layout
-    View view;
+    private View view;
 
     public FavoritosPerfilFragment() {
         // Required empty public constructor
     }
-
-    /*public static FavoritosPerfilFragment newInstance() {
-        return new FavoritosPerfilFragment();
-    }*/
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

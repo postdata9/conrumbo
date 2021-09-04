@@ -34,7 +34,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AgregarLugar  extends AppCompatActivity implements OnMapReadyCallback {
+public class AgregarLugar extends AppCompatActivity implements OnMapReadyCallback {
 
     //datos para el mapa
     private GoogleMap map;
@@ -103,7 +103,7 @@ public class AgregarLugar  extends AppCompatActivity implements OnMapReadyCallba
                 Address ad = list.get(0);
 
                 //almacenamos el nombre del lugar y las coordenadas
-                nombre_lugar = ad.getFeatureName();
+                nombre_lugar = lugar;
                 coordenadas = new LatLng(ad.getLatitude(), ad.getLongitude());
 
                 //añadimos un marcador
@@ -157,7 +157,6 @@ public class AgregarLugar  extends AppCompatActivity implements OnMapReadyCallba
 
             //si la acción es BUSCAR o ENTER
             if(actionId == EditorInfo.IME_ACTION_SEARCH || actionId == EditorInfo.IME_ACTION_DONE
-                    || event.getAction() == KeyEvent.ACTION_DOWN
                     || event.getAction() == KeyEvent.KEYCODE_ENTER){
 
                 //localizamos el lugar

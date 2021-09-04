@@ -74,7 +74,7 @@ public class ModeloGestion extends AppCompatActivity {
     }
 
     /* REGISTRAR USUARIO */
-    public void registrarUsuario(Context cont, String correo, String clave){
+    public void registrarUsuario(String correo, String clave){
         //se registra la cuenta
         user.createUserWithEmailAndPassword(correo, clave)
                 .addOnCompleteListener(this, task -> {
@@ -119,7 +119,7 @@ public class ModeloGestion extends AppCompatActivity {
 
             //definición del nombre de la imagen y donde se almacena
             StorageReference ref = FirebaseStorage.getInstance().getReference()
-                    .child("fotos_perfil/" + user.getCurrentUser().getUid() + ".jpg");
+                    .child(user.getCurrentUser().getUid() + "/perfil.jpg");
             ref.putFile(archivo)
                     .addOnSuccessListener(taskSnapshot -> {
                         Toast.makeText(cont, cont.getResources().getString(R.string.imagen_subida),

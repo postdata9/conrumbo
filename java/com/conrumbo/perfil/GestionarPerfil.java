@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.PopupMenu;
@@ -139,7 +140,7 @@ public class GestionarPerfil extends AppCompatActivity
 
     //obtener la foto de perfil
     private void obtenerImagenPerfil(){
-        StorageReference sr = FirebaseStorage.getInstance().getReference().child("fotos_perfil/" + uid + ".jpg");
+        StorageReference sr = FirebaseStorage.getInstance().getReference().child(uid + "/perfil.jpg");
         sr.getBytes(2048*2048)
                 .addOnSuccessListener(bytes -> {
                     perfil.setImagen(BitmapFactory.decodeByteArray(bytes, 0, bytes.length));
@@ -338,7 +339,7 @@ public class GestionarPerfil extends AppCompatActivity
     /* eliminar datos */
     private void eliminarDatos(){
         View bt = findViewById(R.id.eliminar_datos);
-        PopupMenu popup = new PopupMenu(GestionarPerfil.this, bt);
+        PopupMenu popup = new PopupMenu(GestionarPerfil.this, bt, Gravity.END);
         popup.inflate(R.menu.perf_nd_eliminar);
         popup.show();
         popup.setOnMenuItemClickListener(item -> {
@@ -359,7 +360,7 @@ public class GestionarPerfil extends AppCompatActivity
 
         adb.setTitle(R.string.eliminar_cuenta);
         adb.setMessage(getResources().getText(R.string.eliminar_cuenta_mensaje));
-        adb.setPositiveButton(getResources().getText(R.string.eliminar), (dialog, which) -> mp.eliminarCuentaUsuario(perfil.getImagen()));
+        adb.setPositiveButton(getResources().getText(R.string.eliminar), (dialog, which) -> mp.eliminarCuentaUsuario());
         adb.setNegativeButton(getResources().getText(R.string.cancelar), (dialog, which) -> drawer.closeDrawer(GravityCompat.START));
 
         AlertDialog dialogo = adb.create();

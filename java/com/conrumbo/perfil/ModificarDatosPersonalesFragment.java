@@ -83,7 +83,7 @@ public class ModificarDatosPersonalesFragment extends DialogFragment {
         return super.onOptionsItemSelected(item);
     }
 
-    protected void inicializarDatos(){
+    private void inicializarDatos(){
 
         //inicializamos el nombre
         ((EditText)v.findViewById(R.id.nombre_modificar_perfil)).setText(perf.getNombre());
@@ -100,7 +100,7 @@ public class ModificarDatosPersonalesFragment extends DialogFragment {
         if(perf.getPrivacidad() == 0){ pr.setChecked(false); }
     }
 
-    protected void modificarDatos(){
+    private void modificarDatos(){
         Map<String, Object> datos_modificados = new HashMap<>();
 
         //comprobamos si el nombre ha cambiado
@@ -131,7 +131,7 @@ public class ModificarDatosPersonalesFragment extends DialogFragment {
 
 
     //función para modificar el nombre
-    protected boolean modificarNombre(){
+    private boolean modificarNombre(){
         boolean modificar = false;
 
         String nom = ((EditText)v.findViewById(R.id.nombre_modificar_perfil)).getText().toString().trim();
@@ -141,7 +141,7 @@ public class ModificarDatosPersonalesFragment extends DialogFragment {
         return modificar;
     }
 
-    protected boolean modificarDescripcion(){
+    private boolean modificarDescripcion(){
         boolean modificar = false;
         String desc = ((EditText)v.findViewById(R.id.descripcion_modificar_perfil)).getText().toString().trim();
 
@@ -151,7 +151,7 @@ public class ModificarDatosPersonalesFragment extends DialogFragment {
         return modificar;
     }
 
-    protected boolean modificarEnlace(){
+    private boolean modificarEnlace(){
         boolean modificar = false;
         String enl = ((EditText) v.findViewById(R.id.enlace_modificar_perfil)).getText().toString().trim();
 
@@ -161,7 +161,7 @@ public class ModificarDatosPersonalesFragment extends DialogFragment {
         return modificar;
     }
 
-    protected boolean modificarPrivacidad(){
+    private boolean modificarPrivacidad(){
         boolean modificar = false;
 
         Switch priv_sw = v.findViewById(R.id.privacidad_modificar_perfil);
